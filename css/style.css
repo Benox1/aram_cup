@@ -1,0 +1,337 @@
+/* =========================
+   FOND GLOBAL
+========================= */
+body{
+  margin:0;
+  min-height:100vh;
+  background: url("../assets/background.png") center top / cover no-repeat fixed;
+  font-family: system-ui, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+#header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100000;
+}
+
+.nav{
+  position:fixed;
+  top:16px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+  z-index:100000;
+}
+
+
+.nav-logo{
+  width: 60px;
+}
+
+.nav-links{
+  display:flex;
+  gap:12px;
+}
+
+.nav a{
+  color:#ffd54a;
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:700;
+  background:rgba(255,255,255,.1);
+}
+
+.nav a:hover{
+  background:rgba(255,255,255,.25);
+}
+
+/* =========================
+   CANVAS
+========================= */
+.canvas{
+  position:relative;
+  z-index:1;
+  width:1600px;
+  height:2000px;
+  margin:120px auto 180px;
+}
+
+/* =========================
+   ELEMENTS
+========================= */
+.el{
+  position:absolute;
+  user-select:none;
+  pointer-events:auto;
+}
+
+/* === TES POSITIONS (INCHANGÉES) === */
+
+.titre{ width:80%; top:0; left:50%; transform:translateX(-50%); }
+.classement{ width:80%; top:10px; left:160px; }
+
+.top-kill{ width:80%; top:10px; left:160px; }
+.top-dead{ width:80%; top:10px; left:160px; }
+.top-assist{ width:80%; top:10px; left:160px; }
+
+.stats-games{ width:80%; top:10px; left:160px; }
+.stats-kill{ width:80%; top:10px; left:160px; }
+.stats-death{ width:80%; top:10px; left:160px; }
+.stats-assist{ width:80%; top:7px; left:160px; }
+
+.eliminee{ width:80%; top:10px; left:160px; }
+.top-game-stats{ width:80%; top:20px; left:160px; }
+
+
+/* =========================
+   PAGE CLASSEMENT
+========================= */
+
+.canvas.classement-page{
+  position:relative;
+  width:1600px;
+  height:900px;              /* ajuste si besoin */
+  margin:120px auto 180px;   /* IMPORTANT : espace entre auto et 180px */
+}
+
+/* Titre */
+.classement-titre{
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+}
+
+/* Bloc team (gauche) */
+.classement-team{
+  top:150px;
+  left:-35px;
+  width:38%; /* ajuste */
+}
+
+/* Séparateur (milieu) */
+.classement-sep{
+  top:-30px;
+  left:0;
+  width:100%;  /* ajuste */
+}
+
+/* Bloc solo (droite) */
+.classement-solo{
+  top:150px;
+  left:690px;
+  width:60%; /* ajuste */
+}
+
+
+/* =========================
+   PAGE RÈGLES
+========================= */
+
+.regles-titre{
+  top:0px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+}
+
+.regles-panneau{
+  top:-100px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+}
+
+.regles-logo{
+  top:-130px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+}
+/* =========================
+   PARTICIPANTS
+========================= */
+
+.canvas.participants{
+  position:relative;
+  width:1600px;
+  height:1000px;
+  margin:120px auto 180px;
+}
+
+.participants-title{
+  top:0px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+}
+
+
+/* Cartes */
+.participant-card{
+  width:auto;
+}
+
+/* Ligne 1 */
+.card-1{ top:150px; left:-30px; }
+.card-2{ top:150px; left:530px; }
+.card-3{ top:150px; left:1090px; }
+
+/* Ligne 2 (+360 par ligne) */
+.card-4{ top:510px; left:-30px; }
+.card-5{ top:510px; left:530px; }
+.card-6{ top:510px; left:1090px; }
+
+.card-7{ top:870px; left:-30px; }
+.card-8{ top:870px; left:530px; }
+.card-9{ top:870px; left:1090px; }
+
+.card-10{ top:1230px; left:-30px; }
+.card-11{ top:1230px; left:530px; }
+.card-12{ top:1230px; left:1090px; }
+
+.card-13{ top:1590px; left:-30px; }
+.card-14{ top:1590px; left:530px; }
+.card-15{ top:1590px; left:1090px; }
+
+.card-16{ top:1950px; left:-30px; }
+.card-17{ top:1950px; left:530px; }
+.card-18{ top:1950px; left:1090px; }
+
+.card-19{ top:2310px; left:-30px; }
+.card-20{ top:2310px; left:530px; }
+.card-21{ top:2310px; left:1090px; }
+
+.card-22{ top:2670px; left:-30px; }
+.card-23{ top:2670px; left:530px; }
+.card-24{ top:2670px; left:1090px; }
+
+.card-25{ top:3030px; left:-30px; }
+.card-26{ top:3030px; left:530px; }
+.card-27{ top:3030px; left:1090px; }
+
+.card-28{ top:3390px; left:-30px; }
+.card-29{ top:3390px; left:530px; }
+.card-30{ top:3390px; left:1090px; }
+
+/* Réseaux */
+.social{
+  width:38px;
+  pointer-events:auto;
+  cursor:pointer;
+}
+
+/* +360 par ligne */
+
+/* NovaMat */
+.card-1-social.s1{ top:425px; left: -10px; }
+.card-1-social.s2{ top:425px; left: 30px; }
+.card-1-social.s3{ top:425px; left: 70px; }
+.card-1-social.s4{ top:425px; left: 110px; }
+.card-1-social.s6{ top:425px; left: 150px; }
+
+/* Aikyuuu */
+.card-2-social.s6{ top:425px; left:550px; }
+
+/* Akiraa */
+.card-3-social.s2{ top:425px; left:1110px; }
+.card-3-social.s4{ top:425px; left:1150px; }
+
+/* Alexpotato */
+.card-4-social.s2{ top:785px; left:-10px; }
+
+/* Alpha */
+.card-5-social.s2{ top:785px; left:550px; }
+.card-5-social.s4{ top:785px; left:590px; }
+
+/* Celestial */
+.card-6-social.s6{ top:785px; left:1110px; }
+
+/* DanMartin */
+.card-7-social.s6{ top:1145px; left:-10px; }
+
+/* Durity42 */
+.card-8-social.s6{ top:1145px; left:550px; }
+
+/* Genda */
+.card-9-social.s6{ top:1145px; left:1110px; }
+
+/* Goumandise */
+.card-10-social.s6{ top:1505px; left:-10px; }
+
+/* Jerpheonix */
+.card-11-social.s2{ top:1505px; left: 550px; }
+
+/* Kanade */
+
+/* Kira */
+.card-13-social.s6{ top:1865px; left:-10px; }
+
+/* Kop1 */
+.card-14-social.s6{ top:1865px; left:550px; }
+
+/* Liloohart */
+.card-15-social.s5{ top:1865px; left:1110px; }
+.card-15-social.s6{ top:1865px; left:1150px; }
+
+/* MatisM */
+
+/* Olery */
+.card-17-social.s6{ top:2225px; left:550px; }
+
+/* Ouzglouglou */
+
+/* Pandart */
+.card-19-social.s6{ top:2585px; left:-10px; }
+
+/* Pigi */
+.card-20-social.s1{ top:2585px; left: 550px; }
+
+/* Pinky */
+.card-21-social.s2{ top:2585px; left:1110px; }
+.card-21-social.s5{ top:2585px; left:1150px; }
+.card-21-social.s6{ top:2585px; left:1190px; }
+
+/* Poums */
+.card-22-social.s2{ top:2945px; left:-10px; }
+.card-22-social.s5{ top:2945px; left:30px; }
+
+/* Seeax */
+.card-23-social.s2{ top:2945px; left:550px; }
+.card-23-social.s4{ top:2945px; left:590px; }
+
+/* Snoopi */
+
+/* Strange */
+.card-25-social.s2{ top:3305px; left:-10px; }
+.card-25-social.s4{ top:3305px; left:30px; }
+.card-25-social.s6{ top:3305px; left:70px; }
+
+/* Sunrise */
+.card-26-social.s2{ top:3305px; left:550px; }
+
+/* UnBout2Bois */
+.card-27-social.s6{ top:3305px; left:1110px; }
+
+/* Biscotte */
+.card-28-social.s5{ top:3665px; left:-10px; }
+.card-28-social.s6{ top:3665px; left:30px; }
+
+/* Xiuren15N */
+
+/* Yazord */
+.card-30-social.s2{ top:3665px; left:1110px; }
+.card-30-social.s5{ top:3665px; left:1150px; }
+
