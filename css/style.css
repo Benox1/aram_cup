@@ -160,6 +160,34 @@ body{
   transform:translateX(-50%);
   width:80%;
 }
+
+/* =========================
+   PAGE ACCUEIL
+========================= */
+
+.accueil-titre{
+  top:0px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+}
+
+.texte-panneau{
+  top: 150px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+}
+
+.accueil-video {
+  top: 550px;
+  left:50%;
+  transform:translateX(-50%);
+  display: block;
+  margin:  auto;
+  max-width: 30%;
+}
+
 /* =========================
    PARTICIPANTS
 ========================= */
