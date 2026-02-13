@@ -44,7 +44,7 @@ jobs:
           SHEET_URL: "https://docs.google.com/spreadsheets/d/1yp8fKsWip750zB2DWw0af0MfLSTEOYa_uQPZfsqyWEY"
           FONT_PATH: "assets/Classement/Prog/Oswald-Medium.ttf"
           BASE_IMAGE_PATH: "assets/Classement/Prog/bloc-solo.png"
-          OUTPUT_PATH: "assets/Classement/bloc-solo.png"
+          OUTPUT_PATH: "${{ github.workspace }}/assets/Classement/bloc-solo.png"
         run: python assets/Classement/Prog/render_classement_solo.py
 
       - name: Run render team script
@@ -53,7 +53,7 @@ jobs:
           SHEET_URL: "https://docs.google.com/spreadsheets/d/1yp8fKsWip750zB2DWw0af0MfLSTEOYa_uQPZfsqyWEY"
           FONT_PATH: "assets/Classement/Prog/Oswald-Medium.ttf"
           BASE_IMAGE_PATH: "assets/Classement/Prog/bloc-team.png"
-          OUTPUT_PATH: "assets/Classement/bloc-team.png"
+          OUTPUT_PATH: "${{ github.workspace }}/assets/Classement/bloc-team.png"
         run: python assets/Classement/Prog/render_classement_team.py
 
       - name: Upload artifact (render.png)
