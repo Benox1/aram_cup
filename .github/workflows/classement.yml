@@ -2,7 +2,7 @@ name: Render Classement
 
 on:
   schedule:
-    - cron: "7 * * * *"  
+    - cron: "15 14 * * *"  
   workflow_dispatch:
 
 permissions:
