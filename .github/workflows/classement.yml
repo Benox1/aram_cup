@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r ../../assets/Classement/Prog/requirement.txt
+          pip install -r assets/Classement/Prog/requirement.txt
 
       - name: Create Google credentials file
         run: |
