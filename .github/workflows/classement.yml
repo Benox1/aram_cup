@@ -27,11 +27,11 @@ jobs:
           echo '${{ secrets.GOOGLE_CREDENTIALS }}' > service-account.json
 
       - name: Run SOLO script
-        working-directory: ../../assets/Classement/Prog
+        working-directory: assets/Classement/Prog
         run: python render_classement_solo.py
 
       - name: Run TEAM script
-        working-directory: ../../assets/Classement/Prog
+        working-directory: assets/Classement/Prog
         run: python render_classement_team.py
 
       - name: Commit generated images
