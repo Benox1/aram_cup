@@ -19,18 +19,24 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+  run: |
+    pip install -r aram_cup/assets/Classement/Prog/requirements.txt
+
 
       - name: Create Google credentials file
         run: |
           echo '${{ secrets.GOOGLE_CREDENTIALS }}' > service-account.json
 
       - name: Run SOLO script
-        run: python solo.py
+  working-directory: aram_cup/assets/Classement/Prog
+  run: python render_classement_solo.py
+
 
       - name: Run TEAM script
-        run: python team.py
+  working-directory: aram_cup/assets/Classement/Prog
+  run: python render_classement_team.py
+
+
 
       - name: Commit generated images
         run: |
