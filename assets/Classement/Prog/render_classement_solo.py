@@ -75,9 +75,9 @@ SERVICE_ACCOUNT_FILE = (
 # =================== MAPPING PP ===================
 # Mapping pseudo -> fichier PP (.png)
 PP_FILES = {
-    "Aikyuuu": "pp/aikyuuu.png",
-    "Akiraa": "pp/akiraa.png",
-    "alexpotato1234": "pp/alex.png",
+    "Aikyuuu": "./pp/aikyuuu.png",
+    "Akiraa": "./pp/akiraa.png",
+    "alexpotato1234": "./pp/alex.png",
     "Alpha_Scr33m": "pp/alpha.png",
     "Celestial": "pp/celestial.png",
     "DanMartin": "pp/danmartin.png",
@@ -258,3 +258,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
