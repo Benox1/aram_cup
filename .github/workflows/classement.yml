@@ -47,7 +47,7 @@ jobs:
           OUTPUT_PATH: "assets/Classement/bloc-solo.png"
         run: python assets/Classement/Prog/render_classement_solo.py
 
-        - name: Run render team script
+      - name: Run render team script
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "${{ github.workspace }}/service-account.json"
           SHEET_URL: "https://docs.google.com/spreadsheets/d/1yp8fKsWip750zB2DWw0af0MfLSTEOYa_uQPZfsqyWEY"
