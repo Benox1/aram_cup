@@ -1,0 +1,41 @@
+name: Generate Classements
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"   # toutes les 2 minutes
+  workflow_dispatch:         # bouton manuel
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Create Google credentials file
+        run: |
+          echo '${{ secrets.GOOGLE_CREDENTIALS }}' > service-account.json
+
+      - name: Run SOLO script
+        run: python solo.py
+
+      - name: Run TEAM script
+        run: python team.py
+
+      - name: Commit generated images
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add *.png
+          git commit -m "Auto update classement" || echo "No changes"
+          git push
