@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: classement-solo-render
-          path: bloc-solo.png
+          path: assets/Classement/bloc-solo.png
 
       - name: Commit bloc-solo.png back to repo
         if: success()
