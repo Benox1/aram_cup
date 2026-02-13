@@ -2,8 +2,8 @@ name: Generate Classements
 
 on:
   schedule:
-    - cron: "*/2 * * * *"   # toutes les 2 minutes
-  workflow_dispatch:         # bouton manuel
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,24 +19,20 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-  run: |
-    pip install -r aram_cup/assets/Classement/Prog/requirements.txt
-
+        run: |
+          pip install -r aram_cup/assets/Classement/Prog/requirement.txt
 
       - name: Create Google credentials file
         run: |
           echo '${{ secrets.GOOGLE_CREDENTIALS }}' > service-account.json
 
       - name: Run SOLO script
-  working-directory: aram_cup/assets/Classement/Prog
-  run: python render_classement_solo.py
-
+        working-directory: aram_cup/assets/Classement/Prog
+        run: python render_classement_solo.py
 
       - name: Run TEAM script
-  working-directory: aram_cup/assets/Classement/Prog
-  run: python render_classement_team.py
-
-
+        working-directory: aram_cup/assets/Classement/Prog
+        run: python render_classement_team.py
 
       - name: Commit generated images
         run: |
