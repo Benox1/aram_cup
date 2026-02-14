@@ -135,6 +135,26 @@ body{
   width:60%; /* ajuste */
 }
 
+/* Bloc kill (gauche) */
+.top-kill{
+  top:880px;
+  left:70px;
+  width:25%; /* ajuste */
+}
+
+/* Bloc dead (gauche) */
+.top-dead{
+  top:1460px;
+  left:70px;
+  width:25%; /* ajuste */
+}
+
+/* Bloc assist (gauche) */
+.top-assist{
+  top:2030px;
+  left:70px;
+  width:25%; /* ajuste */
+}
 
 /* =========================
    PAGE RÈGLES
@@ -185,7 +205,7 @@ body{
   transform:translateX(-50%);
   display: block;
   margin:  auto;
-  max-width: 50%;
+  max-width: 30%;
 }
 
 /* =========================
@@ -362,5 +382,4 @@ body{
 /* Yazord */
 .card-30-social.s2{ top:3665px; left:1110px; }
 .card-30-social.s5{ top:3665px; left:1150px; }
-
 
