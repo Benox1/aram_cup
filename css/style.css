@@ -228,7 +228,7 @@ body{
   transform:translateX(-50%);
   display: block;
   margin:  auto;
-  max-width: 30%;
+  max-width: 50%;
 }
 
 /* =========================
@@ -410,3 +410,4 @@ body{
 /* Yazord */
 .card-30-social.s2{ top:3665px; left:1110px; }
 .card-30-social.s5{ top:3665px; left:1150px; }
+
