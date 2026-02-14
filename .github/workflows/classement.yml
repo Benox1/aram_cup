@@ -56,6 +56,33 @@ jobs:
           OUTPUT_PATH: "${{ github.workspace }}/assets/Classement/bloc-team.png"
         run: python assets/Classement/Prog/render_classement_team.py
 
+      - name: Run render kill script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${{ github.workspace }}/service-account.json"
+          SHEET_URL: "https://docs.google.com/spreadsheets/d/1yp8fKsWip750zB2DWw0af0MfLSTEOYa_uQPZfsqyWEY"
+          FONT_PATH: "assets/Classement/Prog/Oswald-Medium.ttf"
+          BASE_IMAGE_PATH: "assets/Classement/Prog/top-kill.png"
+          OUTPUT_PATH: "${{ github.workspace }}/assets/Classement/top-kill.png"
+        run: python assets/Classement/Prog/render_kill.py
+
+      - name: Run render dead script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${{ github.workspace }}/service-account.json"
+          SHEET_URL: "https://docs.google.com/spreadsheets/d/1yp8fKsWip750zB2DWw0af0MfLSTEOYa_uQPZfsqyWEY"
+          FONT_PATH: "assets/Classement/Prog/Oswald-Medium.ttf"
+          BASE_IMAGE_PATH: "assets/Classement/Prog/top-dead.png"
+          OUTPUT_PATH: "${{ github.workspace }}/assets/Classement/top-dead.png"
+        run: python assets/Classement/Prog/render_dead.py
+
+      - name: Run render assist script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${{ github.workspace }}/service-account.json"
+          SHEET_URL: "https://docs.google.com/spreadsheets/d/1yp8fKsWip750zB2DWw0af0MfLSTEOYa_uQPZfsqyWEY"
+          FONT_PATH: "assets/Classement/Prog/Oswald-Medium.ttf"
+          BASE_IMAGE_PATH: "assets/Classement/Prog/top-assist.png"
+          OUTPUT_PATH: "${{ github.workspace }}/assets/Classement/top-assist.png"
+        run: python assets/Classement/Prog/render_assist.py
+
       - name: Upload artifact (render.png)
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,6 +101,10 @@ jobs:
   
           git add assets/Classement/bloc-solo.png
           git add assets/Classement/bloc-team.png
+          git add assets/Classement/top-kill.png
+          git add assets/Classement/top-dead.png
+          git add assets/Classement/top-assist.png
+
   
           git commit -m "Force update classement $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "Nothing to commit"
   
