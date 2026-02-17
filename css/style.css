@@ -411,3 +411,51 @@ body{
 .card-30-social.s2{ top:3665px; left:1110px; }
 .card-30-social.s5{ top:3665px; left:1150px; }
 
+/* =========================
+   TEAMS
+========================= */
+
+/* Titre */
+.team-titre{
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+}
+
+/* Bloc team (gauche) */
+.team-rouge{
+  top:150px;
+  left:35px;
+  width:30%;
+}
+
+.team-vert{
+  top:150px;
+  left:550px;
+  width:30%;
+}
+
+.team-rose{
+  top:150px;
+  left:1065px;
+  width:30%;
+}
+
+.team-orange{
+  top:850px;
+  left:35px;
+  width:30%;
+}
+
+.team-gris{
+  top:850px;
+  left:550px;
+  width:30%;
+}
+
+.team-violet{
+  top:850px;
+  left:1065px;
+  width:30%;
+}
