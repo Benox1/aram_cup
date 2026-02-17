@@ -73,7 +73,6 @@ SERVICE_ACCOUNT_FILE = (
 # =================================================
 
 # =================== MAPPING PP ===================
-# Mapping pseudo -> fichier PP (.png)
 PP_FILES = {
     "Aikyuuu": "assets/Classement/Prog/pp/aikyuuu.png",
     "Akiraa": "assets/Classement/Prog/pp/akiraa.png",
@@ -105,11 +104,27 @@ PP_FILES = {
     "UneBiscotteMolle": "assets/Classement/Prog/pp/biscotte.png",
     "Xiuren15N": "assets/Classement/Prog/pp/xiuren.png",
     "y": "assets/Classement/Prog/pp/y.png",
-
-
 }
 
 # =================================================
+# === AJOUT : GROUPES DE COULEURS ===
+COLOR_GROUPS = {
+    "#f50e0e": ["DanMartin", "UnBout2Bois", "Gourmandise_", "Alpha_Scr33m", "Genda"],
+    "#027412": ["UneBiscotteMolle", "Aikyuuu", "durity42", "k0p1", "Snoopi"],
+    "#f021a0": ["Jerpheonix", "Akiraa", "PinkyLaTerreur", "Kira", "MatisM"],
+    "#ec9d09": ["y", "NovaMat", "Xiuren15N", "Poums", "Pigi"],
+    "#4a484b": ["Celestial", "alexpotato1234", "SeeaX_Tw", "PandArt", "OUZGOULOU"],
+    "#af4de0": ["Sunrise", "Liloohart", "Kanade", "Dozemon", "Strange__"],
+
+}
+
+def get_pseudo_color(pseudo):
+    for color, players in COLOR_GROUPS.items():
+        if pseudo in players:
+            return parse_color(color)
+    return parse_color(TEXT_COLOR)
+# =================================================
+
 
 def parse_color(v):
     try:
@@ -189,7 +204,6 @@ def main():
     im = Image.open(BASE_IMAGE_PATH).convert("RGBA")
     W,H = im.size
     draw = ImageDraw.Draw(im)
-    color = parse_color(TEXT_COLOR)
 
     rows = get_rows(sheet_url, ROW_COUNT)
 
@@ -226,31 +240,31 @@ def main():
         circle_x1 = int(circle_x0 + circle_diameter)
         circle_y1 = int(circle_y0 + circle_diameter)
 
-
         pp_file = PP_FILES.get(pseudo)
         if pp_file and Path(pp_file).exists():
             pp_im = Image.open(pp_file).convert("RGBA")
             pp_im = pp_im.resize((circle_diameter, circle_diameter))
-            # Masque circulaire
             mask = Image.new("L", (circle_diameter, circle_diameter), 0)
             mask_draw = ImageDraw.Draw(mask)
             mask_draw.ellipse((0,0,circle_diameter,circle_diameter), fill=255)
-            # Coller l'image
             im.paste(pp_im, (circle_x0, circle_y0), mask)
-
 
         # Décaler pseudo après le rond
         pseudo_box = (circle_x1 + 10, box_top, box_right, box_bottom)
-        draw_in_box_left(draw, pseudo, pseudo_box, color)
+
+        ### AJOUT : couleur personnalisée
+        pseudo_color = get_pseudo_color(pseudo)
+
+        draw_in_box_left(draw, pseudo, pseudo_box, pseudo_color)
 
         # ------------------- RESTE DES COLONNES -------------------
-        draw_in_box_center(draw, games,  col_box(GAMES_L,GAMES_R), color)
-        draw_in_box_center(draw, win,    col_box(WIN_L,WIN_R), color)
-        draw_in_box_center(draw, loose,  col_box(LOOSE_L,LOOSE_R), color)
-        draw_in_box_center(draw, kill,   col_box(KILL_L,KILL_R), color)
-        draw_in_box_center(draw, dead,   col_box(DEAD_L,DEAD_R), color)
-        draw_in_box_center(draw, assist, col_box(ASSIST_L,ASSIST_R), color)
-        draw_in_box_center(draw, kda,    col_box(KDA_L,KDA_R), color)
+        draw_in_box_center(draw, games,  col_box(GAMES_L,GAMES_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, win,    col_box(WIN_L,WIN_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, loose,  col_box(LOOSE_L,LOOSE_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, kill,   col_box(KILL_L,KILL_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, dead,   col_box(DEAD_L,DEAD_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, assist, col_box(ASSIST_L,ASSIST_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, kda,    col_box(KDA_L,KDA_R), parse_color(TEXT_COLOR))
 
     im.convert("RGB").save(OUTPUT_PATH)
     print("✅ Classement SOLO généré :", OUTPUT_PATH)
@@ -258,6 +272,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
