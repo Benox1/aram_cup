@@ -115,7 +115,6 @@ COLOR_GROUPS = {
     "#ec9d09": ["y", "NovaMat", "Xiuren15N", "Poums", "Pigi"],
     "#4a484b": ["Celestial", "alexpotato1234", "SeeaX_Tw", "PandArt", "OUZGOULOU"],
     "#af4de0": ["Sunrise", "Liloohart", "Kanade", "Dozemon", "Strange__"],
-
 }
 
 def get_pseudo_color(pseudo):
@@ -123,8 +122,8 @@ def get_pseudo_color(pseudo):
         if pseudo in players:
             return parse_color(color)
     return parse_color(TEXT_COLOR)
-# =================================================
 
+# =================================================
 
 def parse_color(v):
     try:
@@ -252,19 +251,30 @@ def main():
         # Décaler pseudo après le rond
         pseudo_box = (circle_x1 + 10, box_top, box_right, box_bottom)
 
-        ### AJOUT : couleur personnalisée
+        ### Couleur personnalisée du pseudo
         pseudo_color = get_pseudo_color(pseudo)
 
         draw_in_box_left(draw, pseudo, pseudo_box, pseudo_color)
 
+        # ------------------- COULEUR DES STATS -------------------
+        default_color = parse_color(TEXT_COLOR)
+
+        try:
+            loose_int = int(loose)
+        except:
+            loose_int = 0
+
+        # Si 15 défaites ou plus → texte noir
+        stats_color = (0, 0, 0) if loose_int >= 15 else default_color
+
         # ------------------- RESTE DES COLONNES -------------------
-        draw_in_box_center(draw, games,  col_box(GAMES_L,GAMES_R), parse_color(TEXT_COLOR))
-        draw_in_box_center(draw, win,    col_box(WIN_L,WIN_R), parse_color(TEXT_COLOR))
-        draw_in_box_center(draw, loose,  col_box(LOOSE_L,LOOSE_R), parse_color(TEXT_COLOR))
-        draw_in_box_center(draw, kill,   col_box(KILL_L,KILL_R), parse_color(TEXT_COLOR))
-        draw_in_box_center(draw, dead,   col_box(DEAD_L,DEAD_R), parse_color(TEXT_COLOR))
-        draw_in_box_center(draw, assist, col_box(ASSIST_L,ASSIST_R), parse_color(TEXT_COLOR))
-        draw_in_box_center(draw, kda,    col_box(KDA_L,KDA_R), parse_color(TEXT_COLOR))
+        draw_in_box_center(draw, games,  col_box(GAMES_L,GAMES_R), stats_color)
+        draw_in_box_center(draw, win,    col_box(WIN_L,WIN_R), stats_color)
+        draw_in_box_center(draw, loose,  col_box(LOOSE_L,LOOSE_R), stats_color)
+        draw_in_box_center(draw, kill,   col_box(KILL_L,KILL_R), stats_color)
+        draw_in_box_center(draw, dead,   col_box(DEAD_L,DEAD_R), stats_color)
+        draw_in_box_center(draw, assist, col_box(ASSIST_L,ASSIST_R), stats_color)
+        draw_in_box_center(draw, kda,    col_box(KDA_L,KDA_R), stats_color)
 
     im.convert("RGB").save(OUTPUT_PATH)
     print("✅ Classement SOLO généré :", OUTPUT_PATH)
